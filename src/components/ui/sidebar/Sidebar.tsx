@@ -1,20 +1,40 @@
 'use client';
 import Link from "next/link";
-import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoSearch, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5";
+import {
+    IoCloseOutline,
+    IoLogInOutline,
+    IoLogOutOutline,
+    IoPeopleOutline,
+    IoPersonOutline,
+    IoSearchOutline,
+    IoShirtOutline,
+    IoTicketOutline
+} from "react-icons/io5";
+
+import { useUIStore } from "@/store";
+import { clsx } from "clsx";
 
 export function Sidebar() {
+    const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
+    const closeMenu = useUIStore(state => state.closeSideMenu);
+
     return (
-        <div>
-            {/* Black background */}
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-            {/* Blur */}
-            <div className="fixed inset-0 backdrop-blur-sm z-40"></div>
-            {/* Sidebar */}
-            <aside className="fixed top-0 right-0 w-96 h-full bg-white shadow-lg z-50 p-4">
+        <div>{isSideMenuOpen && (
+            <>
+                <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                <div className="fixed inset-0 backdrop-blur-sm z-40" onClick={() => { closeMenu() }}></div>
+            </>
+        )}
+            <aside className={clsx("fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 z-50 transform transition-transform duration-300",
+                {
+                    'translate-x-0': isSideMenuOpen,
+                    'translate-x-full': !isSideMenuOpen,
+                }
+            )}>
                 <IoCloseOutline
                     size={50}
                     className="absolute top-4 right-4 cursor-pointer hover:text-gray-600"
-                    onClick={() => { }}
+                    onClick={() => { closeMenu() }}
                 />
 
                 {/* Search input */}
