@@ -7,7 +7,11 @@
 //Creamos una parte del sistema de archivos y carpetas que vamos a estar utilizando
 //El [slug] es un identificador del producto que es humanamente legible
 
-<!-- #git push -u origin main -->
-
 //Implementacion de zustand (Para manejo del estado global)
 //instalamos clsx (para trabajar con las clases condicionales en tailwind)
+
+<!-- #git push -u origin main -->
+
+//Mostrando los articulos filtrados en las categorias de men,woman y kid
+//instalamos Swiper para manejar los sliders de las fotos
+//Implementamos los slides en desktop y en mobile

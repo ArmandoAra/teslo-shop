@@ -14,7 +14,7 @@ export default function ProductGridItem({ product }: Props) {
 
     return (
         <div className='border p-4 rounded-lg fade-in'>
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/product/${product.slug}`}>
                 <Image
                     src={`/products/${displayImage}`}
                     alt={product.title}

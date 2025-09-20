@@ -22,7 +22,7 @@ export function TopMenu() {
                     <Link href="/category/women" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Women</Link>
                 </li>
                 <li>
-                    <Link href="/category/kids" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Kids</Link>
+                    <Link href="/category/kid" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Kids</Link>
                 </li>
             </ul>
 
