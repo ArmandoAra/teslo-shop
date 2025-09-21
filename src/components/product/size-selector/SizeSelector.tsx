@@ -12,7 +12,7 @@ export function SizeSelector({ selectedSize, availableSizes }: Props) {
     return (
         <div className="my-5">
             <h3 className="font-semibold mb-2">Available Sizes</h3>
-            <div id="size" className="mt-1 flex cursor-pinter  border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <div id="size" className="mt-1 flex ">
                 {availableSizes?.map(size => (
                     <button
                         className={
