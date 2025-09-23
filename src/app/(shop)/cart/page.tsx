@@ -22,7 +22,6 @@ export default function CartPage() {
     return (
         <div className="flex flex-col justify-center items-center p-4 mb-20 ">
             <PageTitle title="Cart" />
-
             <div className="w-full flex flex-col md:grid md:grid-cols-[2fr_1fr] justify-center items-start gap-10 md:gap-2">
                 {/* Carrito */}
                 <div className="flex flex-col items-center mt-10 w-full">

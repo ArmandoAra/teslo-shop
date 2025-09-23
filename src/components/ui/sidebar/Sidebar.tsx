@@ -1,18 +1,13 @@
 'use client';
-import Link from "next/link";
 import {
     IoCloseOutline,
-    IoLogInOutline,
-    IoLogOutOutline,
-    IoPeopleOutline,
-    IoPersonOutline,
     IoSearchOutline,
-    IoShirtOutline,
-    IoTicketOutline
 } from "react-icons/io5";
 
 import { useUIStore } from "@/store";
 import { clsx } from "clsx";
+import { menuItemsGroup1, menuItemsGroup2 } from "@/constants/sidebar";
+import { MenuItem } from "@/components/sidebar/MenuItem";
 
 export function Sidebar() {
     const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
@@ -48,44 +43,31 @@ export function Sidebar() {
                 </div>
 
                 {/* Menu items */}
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoPersonOutline />
-                    <span className="ml-2">My Account</span>
-                </Link>
-
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoTicketOutline />
-                    <span className="ml-2">My Tickets</span>
-                </Link>
-
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoLogInOutline />
-                    <span className="ml-2">Log In</span>
-                </Link>
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoLogOutOutline />
-                    <span className="ml-2">Log Out</span>
-                </Link>
-
+                {
+                    menuItemsGroup1.map((item, index) => {
+                        return (
+                            <MenuItem
+                                key={index}
+                                link={item.link}
+                                title={item.title}
+                                icon={item.icon}
+                            />)
+                    })
+                }
                 {/* Line Separator */}
                 <hr className="my-4 border-gray-300" />
-
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoShirtOutline />
-                    <span className="ml-2">Products</span>
-                </Link>
-
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoTicketOutline />
-                    <span className="ml-2">Orders</span>
-                </Link>
-
-                <Link href="/" className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800">
-                    <IoPeopleOutline />
-                    <span className="ml-2">Usuarios</span>
-                </Link>
-
-
+                {
+                    menuItemsGroup2.map((item, index) => {
+                        return (
+                            <MenuItem
+                                key={index}
+                                link={item.link}
+                                title={item.title}
+                                icon={item.icon}
+                            />
+                        )
+                    })
+                }
             </aside>
         </div>
     );

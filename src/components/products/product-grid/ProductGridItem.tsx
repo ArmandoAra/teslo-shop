@@ -8,7 +8,6 @@ interface Props {
     product: Product;
 }
 
-
 export default function ProductGridItem({ product }: Props) {
     const [displayImage, setDisplayImage] = useState(product.images[0]);
 
