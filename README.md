@@ -35,12 +35,15 @@ npx prisma migrate dev --name init (init para la primera, pero puede ser reempla
 //Creamos un script en node-modules para configurar el comando de ejucion del script anterior
 //Configuramos el prisma client (src/lib/prisma.ts) copiamos la configuracion que aparece en la documentacion (https://www.prisma.io/docs/guides/nextjs)
 
-<!-- #git push -u origin main -->
-
 //consumir los datos desde la db (server action)
 centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/products/product-pagination.ts)
 
 //Hacer paginacion
+
+<!-- #git push -u origin main -->
+
+//filtro por genero en la barra superior
+//paginacion en cada pagina con el filtro
 
 <!-- Importante (En los scripts de node no utilizar las rutas de importacion con @ , porque no las reconoce) -->
 <!-- Nota: para ejecutarlo debemos ir en la terminal a la ruta donde esta el seed y ejecutar npx tsc --init para crear un archivo de configuracion y asi se puedan hacer importaciones

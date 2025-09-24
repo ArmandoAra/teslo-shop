@@ -19,7 +19,7 @@ export default function Pagination({ totalPages }: Props) {
 
     const paginationNumbers = generatePaginationNumbers(currentPage, totalPages);
 
-    if (!totalPages || totalPages <= 1) return null;
+    if (!totalPages || totalPages < 1) return null;
 
     const createPageUrl = (page: number | string) => {
         const params = new URLSearchParams(searchParams);
@@ -61,7 +61,7 @@ export default function Pagination({ totalPages }: Props) {
                                         { ' pointer-events-none': num === currentPage },
                                     )
                                 }
-                                href={`/?page=${num}`}>{num}</Link>
+                                href={`${pathName}/?page=${num}`}>{num}</Link>
                         </li>
                     ))}
                     <li className="page-item"><a

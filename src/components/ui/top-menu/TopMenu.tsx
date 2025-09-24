@@ -16,13 +16,13 @@ export function TopMenu() {
             {/* Centerd menu */}
             <ul className="hidden sm:flex gap-0 md:gap-5 mx-auto">
                 <li>
-                    <Link href="/category/men" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Men</Link>
+                    <Link href="/gender/men" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Men</Link>
                 </li>
                 <li>
-                    <Link href="/category/women" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Women</Link>
+                    <Link href="/gender/women" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Women</Link>
                 </li>
                 <li>
-                    <Link href="/category/kid" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Kids</Link>
+                    <Link href="/gender/kid" className="flex items-center justify-center w-16 md:w-24 h-8 transition-all m-2 rounded-md hover:bg-gray-200 hover:text-gray-800">Kids</Link>
                 </li>
             </ul>
 

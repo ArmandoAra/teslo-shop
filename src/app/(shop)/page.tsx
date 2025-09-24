@@ -1,3 +1,5 @@
+export const revalidate = 60; //60 seconds (esto es para que next haga revalidacion cada 60 segundos y no en cada peticion)
+
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import ProductGrid from "@/components/products/product-grid/ProductGrid";

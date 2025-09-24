@@ -1,0 +1,7 @@
+**/Configuración local/
+**/AppData/
+**/Application Data/
+**/.git/
+**/node_modules/
+**/.next/
+**/out/

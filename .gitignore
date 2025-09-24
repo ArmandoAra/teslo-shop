@@ -42,3 +42,12 @@ next-env.d.ts
 
 /postgres/
 /src/generated/prisma
+
+# Directorios de Windows problemáticos
+**/Configuración local/
+**/AppData/
+**/Application Data/
+**/.git/
+**/node_modules/
+**/.next/
+**/out/

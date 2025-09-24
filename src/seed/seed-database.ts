@@ -1,5 +1,5 @@
 import { initialData } from './seed.js';
-import prisma from '../lib/prisma.js';
+import prisma from '../lib/prisma';
 
 //Run: npx tsx src/seed/seed-database.ts
 // Script to seed the database with initial data
