@@ -1,14 +1,31 @@
+import { getPaginatedProductsWithImages } from "@/actions";
+import { redirect } from "next/navigation";
 import ProductGrid from "@/components/products/product-grid/ProductGrid";
 import Title from "@/components/ui/title/Title";
-import { initialData } from "@/seed/seed";
+import Pagination from "@/components/ui/pagination/Pagination";
 
-const products = initialData.products;
+interface Props {
+  searchParams: {
+    page?: string;
+  }
+}
 
-export default function Home() {
+export default async function Home({ searchParams }: Props) {
+
+  const params = await searchParams
+  const page = params.page ? parseInt(params.page) : 1;
+
+  const { products, totalPages } = await getPaginatedProductsWithImages({ page });
+
+  if (products.length === 0) {
+    redirect('/')
+  }
+
   return (
     <>
       <Title title="Welcome to Teslo Shop" subtitle="La mejor tienda de tecnología" className="text-center" />
       <ProductGrid products={products} />
+      <Pagination totalPages={totalPages} />
     </>
   );
 }

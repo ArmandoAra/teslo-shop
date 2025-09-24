@@ -22,6 +22,7 @@ export default function ProductGridItem({ product }: Props) {
                     height={500}
                     onMouseOver={() => setDisplayImage(product.images[1] || product.images[0])}
                     onMouseOut={() => setDisplayImage(product.images[0])}
+                    priority
                 />
             </Link>
             <Link href={`/products/${product.slug}`} className="hover:text-blue-600 ">

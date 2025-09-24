@@ -21,8 +21,6 @@
 //Shop Footer
 //Login and Register Screen
 
-<!-- #git push -u origin main -->
-
 //Preparando todo lo que tiene que ver con la base de datos
 //Configurar y levantar docker creando el docker-compose.yml y las variables de entorno
 //Configurar el cliente de prisma (Documentacion en el enlace )
@@ -37,6 +35,13 @@ npx prisma migrate dev --name init (init para la primera, pero puede ser reempla
 //Creamos un script en node-modules para configurar el comando de ejucion del script anterior
 //Configuramos el prisma client (src/lib/prisma.ts) copiamos la configuracion que aparece en la documentacion (https://www.prisma.io/docs/guides/nextjs)
 
+<!-- #git push -u origin main -->
+
+//consumir los datos desde la db (server action)
+centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/products/product-pagination.ts)
+
+//Hacer paginacion
+
 <!-- Importante (En los scripts de node no utilizar las rutas de importacion con @ , porque no las reconoce) -->
 <!-- Nota: para ejecutarlo debemos ir en la terminal a la ruta donde esta el seed y ejecutar npx tsc --init para crear un archivo de configuracion y asi se puedan hacer importaciones
 desde el archivo del script.(al final use npx tsx src/seed/seed-database.ts para correr el script porque no me funciono con npm run seed-->
@@ -50,11 +55,11 @@ sus respectivas relaciones y todo como lo hemos creado.Es util cuando ya tenemos
 
 1. Clonar el repositorio.
 
-2. Crear una compia del archivo .env.template , renombrarlo a .env y cambiar las variables de entorno
+2. Crear una copia del archivo .env.template , renombrarlo a .env y cambiar las variables de entorno
 
 3. Instalar dependencias `npm install`.
 
-4. Levantar la base de datos `docker compose up -d`.
+4. Levantar la base de datos `docker compose up -d`. ( Asegurarse que tengan el docker corriendo)
 
 5.Correr las migraciones de Prisma `npx prisma migrate dev`
 
