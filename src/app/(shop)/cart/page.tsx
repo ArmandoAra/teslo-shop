@@ -1,9 +1,8 @@
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
-import PageTitle from "@/components/ui/title/Title";
+import PageTitle from "@/components/ui/title-component/Title";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import { IoTrashBinOutline } from "react-icons/io5";
 

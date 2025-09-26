@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/title/Title";
+import PageTitle from "@/components/ui/title-component/Title";
 import Link from 'next/link';
 
 

@@ -1,16 +1,46 @@
+export const revalidate = 10080; // 7 days// Cada 7 dias se vuelve a generar la pagina con la nueva informacion de la base de datos
+
+import { getProductBySlug } from "@/actions";
 import { MobileProductSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
+import StockLabel from "@/components/product/stock-label/StockLabel";
 import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
+import { Metadata, ResolvingMetadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { notFound } from "next/navigation";
 
 interface Props {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
+}
+
+type MetadataProps = {
+    params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata(
+    { params }: MetadataProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const slug = (await params).slug
+
+    // fetch post information
+    const product = await getProductBySlug(slug)
+
+    return {
+        title: product ? `${product.title} | Teslo Shop` : 'Teslo Shop',
+        description: product?.description ?? 'Teslo Shop - The best products',
+        openGraph: {
+            title: product ? `${product.title} | Teslo Shop` : 'Teslo Shop',
+            description: product?.description ?? 'Teslo Shop - The best products',
+            //   url: `https://teslo-shop.vercel.app/product/${product?.slug}`, ejemplo, seria el url de produccion
+            images: [`/products/${product?.images[1]}`]
+        }
+    }
 }
 
 
 export default async function ProductPageId({ params }: Props) {
     const { slug } = await params;
-    const product = initialData.products.find(p => p.slug === slug);
+    const product = await (await import('@/actions')).getProductBySlug(slug);
+
 
     if (!product) {
         notFound();
@@ -40,7 +70,11 @@ export default async function ProductPageId({ params }: Props) {
 
                 {/* Detalles */}
                 <div className="col-span-1 p-4 md:p-0">
-                    <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product?.title}</h1>
+                    {/* In Stock */}
+                    <StockLabel slug={product?.slug} />
+                    <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
+                        {product?.title}
+                    </h1>
                     <p className="text-gray-700 mb-2"><span className="font-semibold">Price:</span> ${product?.price}</p>
                     {/* Selector de tallas */}
                     <SizeSelector

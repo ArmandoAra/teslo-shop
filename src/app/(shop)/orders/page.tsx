@@ -1,5 +1,5 @@
 // https://tailwindcomponents.com/component/hoverable-table
-import PageTitle from '@/components/ui/title/title';
+import PageTitle from '@/components/ui/title-component/Title';
 
 import Link from 'next/link';
 import { IoCardOutline } from 'react-icons/io5';

@@ -4,9 +4,12 @@ import "@/styles/globals.css";
 import { inter } from "@/config/fonts";
 
 
-
+// El template va a definir como queremos que se vea una parte de todas nuestras rutas
 export const metadata: Metadata = {
-  title: "Teslo Shop",
+  title: {
+    default: "Teslo Shop",
+    template: "%s | Teslo Shop",
+  },
   description: "E-commerce app",
 };
 

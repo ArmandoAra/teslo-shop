@@ -2,7 +2,7 @@ export const revalidate = 60; //60 seconds
 
 
 import ProductGrid from "@/components/products/product-grid/ProductGrid";
-import Title from "@/components/ui/title/Title";
+import Title from "@/components/ui/title-component/Title";
 
 // constants
 import { redirect } from "next/navigation";
@@ -12,12 +12,12 @@ import Pagination from "@/components/ui/pagination/Pagination";
 
 
 interface Props {
-    params: {
+    params: Promise<{
         gender: string;
-    };
-    searchParams: {
+    }>;
+    searchParams: Promise<{
         page?: string
-    }
+    }>
 }
 
 export default async function CategoryPage({ params, searchParams: sParams }: Props) {

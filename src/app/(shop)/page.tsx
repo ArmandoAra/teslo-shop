@@ -3,13 +3,13 @@ export const revalidate = 60; //60 seconds (esto es para que next haga revalidac
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import ProductGrid from "@/components/products/product-grid/ProductGrid";
-import Title from "@/components/ui/title/Title";
+import Title from "@/components/ui/title-component/Title";
 import Pagination from "@/components/ui/pagination/Pagination";
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
-  }
+  }>;
 }
 
 export default async function Home({ searchParams }: Props) {

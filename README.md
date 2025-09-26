@@ -40,14 +40,25 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 
 //Hacer paginacion
 
-<!-- #git push -u origin main -->
-
 //filtro por genero en la barra superior
 //paginacion en cada pagina con el filtro
+
+<!-- #git push -u origin main -->
+
+//Traer informacion del producto(Stock, revalidar stock siempre y mantener la demas data en cache)
+//Renderizando la metadata dinamica con la informacion del producto (generateMetadata)
+
+//Revalidacion cada 7 dias
+//Renderizar del lado del cliente la informacion que cambia constantemente
+//server Actions (Creamos server action para obtener el slug del producto)
+//Informacion OpenGraph
+//Cambiar Metadata
+//Detalles a la hora de compartir enlaces en redes sociales
 
 <!-- Importante (En los scripts de node no utilizar las rutas de importacion con @ , porque no las reconoce) -->
 <!-- Nota: para ejecutarlo debemos ir en la terminal a la ruta donde esta el seed y ejecutar npx tsc --init para crear un archivo de configuracion y asi se puedan hacer importaciones
 desde el archivo del script.(al final use npx tsx src/seed/seed-database.ts para correr el script porque no me funciono con npm run seed-->
+<!-- Nota: ngrok es un sitio para probar la app sin subirla a produccion -->
 
 <!-- Nota: Si creamos las tablas en una app de terceros y despues en el proyecto ejecutamos (npx prisma db pull) podremos descargar los modelos con
 sus respectivas relaciones y todo como lo hemos creado.Es util cuando ya tenemos una base de datos previamente creada-->

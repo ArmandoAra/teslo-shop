@@ -1,6 +1,4 @@
 import { titleFont } from '@/config/fonts';
-import Link from 'next/link';
-import { type } from '../../../../.next/types/routes';
 
 export default function NewAccountPage() {
   return (

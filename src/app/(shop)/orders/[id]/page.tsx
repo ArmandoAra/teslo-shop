@@ -1,11 +1,10 @@
-import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
-import PageTitle from "@/components/ui/title/Title";
+import PageTitle from "@/components/ui/title-component/Title";
 import { initialData } from "@/seed/seed";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-import { IoCard, IoCardOutline, IoTrashBinOutline } from "react-icons/io5";
+import { IoCardOutline, IoTrashBinOutline } from "react-icons/io5";
 
 const productsInCart = [
     initialData.products[0],
@@ -17,11 +16,11 @@ const productsInCart = [
 ]
 
 interface Props {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
-export default function OrderByIdPage({ params }: Props) {
-    const { id } = params;
+export default async function OrderByIdPage({ params }: Props) {
+    const { id } = await params;
 
     // Verificar
     //Redirect
