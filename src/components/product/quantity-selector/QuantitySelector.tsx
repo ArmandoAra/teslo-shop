@@ -1,25 +1,21 @@
 'use client';
-import { useState } from 'react';
 interface Props {
     quantity: number;
+    stock?: number;
+    onQuantityChange?: (quantity: number) => void;
 }
 
-export function QuantitySelector({ quantity }: Props) {
-    const [count, setCount] = useState(quantity);
-
-    const increment = () => {
-        setCount(prev => Math.min(prev + 1, 5));
-    };
-
-    const decrement = () => {
-        setCount(prev => Math.max(prev - 1, 1));
-    };
+export function QuantitySelector({ quantity, stock, onQuantityChange }: Props) {
 
     return (
         <div className="flex items-center">
-            <button onClick={decrement} className="btn-secondary">-</button>
-            <span className="mx-2">{count}</span>
-            <button onClick={increment} className="btn-secondary">+</button>
+            <button onClick={() => {
+                if (quantity > 1) onQuantityChange?.(quantity - 1)
+            }} className="btn-secondary">-</button>
+            <span className="mx-2">{quantity}</span>
+            <button onClick={() => {
+                if (quantity < (stock ?? 1)) onQuantityChange?.(quantity + 1)
+            }} className="btn-secondary">+</button>
         </div>
     );
 }

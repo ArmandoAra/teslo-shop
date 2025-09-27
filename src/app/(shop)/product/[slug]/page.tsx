@@ -6,6 +6,7 @@ import StockLabel from "@/components/product/stock-label/StockLabel";
 import { titleFont } from "@/config/fonts";
 import { Metadata, ResolvingMetadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { notFound } from "next/navigation";
+import AddToCart from "./ui/AddToCart";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -31,7 +32,7 @@ export async function generateMetadata(
             title: product ? `${product.title} | Teslo Shop` : 'Teslo Shop',
             description: product?.description ?? 'Teslo Shop - The best products',
             //   url: `https://teslo-shop.vercel.app/product/${product?.slug}`, ejemplo, seria el url de produccion
-            images: [`/products/${product?.images[1]}`]
+            // images: [`/products/${product?.images[1]}`]
         }
     }
 }
@@ -76,18 +77,8 @@ export default async function ProductPageId({ params }: Props) {
                         {product?.title}
                     </h1>
                     <p className="text-gray-700 mb-2"><span className="font-semibold">Price:</span> ${product?.price}</p>
-                    {/* Selector de tallas */}
-                    <SizeSelector
-                        availableSizes={product?.sizes}
-                        selectedSize={product?.sizes[0]}
-                    />
 
-                    {/* Selector de cantidad */}
-                    <QuantitySelector quantity={2} />
-
-                    <button className="btn-primary mt-4 w-full">
-                        Add to Cart
-                    </button>
+                    <AddToCart product={product} />
 
                     <h3 className="mt-6 font-semibold">Description</h3>
                     <p className="text-gray-600 font-light">{product?.description}</p>

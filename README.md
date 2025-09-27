@@ -43,17 +43,19 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //filtro por genero en la barra superior
 //paginacion en cada pagina con el filtro
 
-<!-- #git push -u origin main -->
-
 //Traer informacion del producto(Stock, revalidar stock siempre y mantener la demas data en cache)
 //Renderizando la metadata dinamica con la informacion del producto (generateMetadata)
-
 //Revalidacion cada 7 dias
 //Renderizar del lado del cliente la informacion que cambia constantemente
 //server Actions (Creamos server action para obtener el slug del producto)
 //Informacion OpenGraph
 //Cambiar Metadata
 //Detalles a la hora de compartir enlaces en redes sociales
+
+<!-- #git push -u origin main -->
+
+//Logica relacionada con el carrito de compras
+//Persistencia del carrito en el localStorage
 
 <!-- Importante (En los scripts de node no utilizar las rutas de importacion con @ , porque no las reconoce) -->
 <!-- Nota: para ejecutarlo debemos ir en la terminal a la ruta donde esta el seed y ejecutar npx tsc --init para crear un archivo de configuracion y asi se puedan hacer importaciones
@@ -62,6 +64,9 @@ desde el archivo del script.(al final use npx tsx src/seed/seed-database.ts para
 
 <!-- Nota: Si creamos las tablas en una app de terceros y despues en el proyecto ejecutamos (npx prisma db pull) podremos descargar los modelos con
 sus respectivas relaciones y todo como lo hemos creado.Es util cuando ya tenemos una base de datos previamente creada-->
+
+<!-- Hidratacion: Hicimos un loader en el componente del top-menu, y seteamos el loader en false dentro de un useEffect que va a disparar false cuando se termine de cargar
+el componente, hicimos la condicion que no mostrara la cantidad del carrito hasta que se haya cargado el componente, y asi no da el error de hidratacion -->
 
 ## Descripcion
 
