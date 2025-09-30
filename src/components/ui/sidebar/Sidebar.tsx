@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import Link from "next/link";
 import { logout } from "@/actions/auth/logout";
-import { set } from "zod";
+import router from "next/router";
 
 
 export function Sidebar() {
@@ -116,18 +116,18 @@ const LogInLink = ({ closeMenu }: { closeMenu: () => void }) => {
 const LogOutLink = ({ closeMenu, setLogged, setAdmin }: { closeMenu: () => void, setLogged: (value: boolean) => void, setAdmin: (value: false) => void }) => {
     const handleClick = async () => {
         await logout();
+        router.replace('/auth/login')
         setLogged(false);
         setAdmin(false);
         closeMenu();
     }
     return (
-        <Link
-            href="/"
+        <button
             className="flex items-center w-full h-10 mt-4 transition-all rounded-md hover:bg-gray-200 hover:text-gray-800"
             onClick={handleClick}
         >
             <IoLogOutOutline />
             <span className="ml-2">Log Out</span>
-        </Link>
+        </button>
     );
 }   

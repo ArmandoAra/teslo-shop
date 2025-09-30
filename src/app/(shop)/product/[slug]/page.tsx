@@ -1,10 +1,10 @@
 export const revalidate = 10080; // 7 days// Cada 7 dias se vuelve a generar la pagina con la nueva informacion de la base de datos
 
 import { getProductBySlug } from "@/actions";
-import { MobileProductSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
+import { MobileProductSlideshow, ProductSlideshow } from "@/components";
 import StockLabel from "@/components/product/stock-label/StockLabel";
 import { titleFont } from "@/config/fonts";
-import { Metadata, ResolvingMetadata } from "next/dist/lib/metadata/types/metadata-interface";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { notFound } from "next/navigation";
 import AddToCart from "./ui/AddToCart";
 
@@ -18,7 +18,6 @@ type MetadataProps = {
 
 export async function generateMetadata(
     { params }: MetadataProps,
-    parent: ResolvingMetadata
 ): Promise<Metadata> {
     const slug = (await params).slug
 

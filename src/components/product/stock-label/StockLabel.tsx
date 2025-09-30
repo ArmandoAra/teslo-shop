@@ -1,7 +1,6 @@
 'use client'; //Porque cada vez que se carge quiero pedir el stock
 import { getStockBySlug } from "@/actions/products/get-stock-by-slug";
 import { titleFont } from "@/config/fonts";
-import { get } from "http";
 import { useEffect, useState } from "react";
 
 interface Props {

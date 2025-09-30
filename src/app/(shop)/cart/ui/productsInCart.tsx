@@ -5,7 +5,6 @@ import Image from "next/image";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
 import { useEffect, useState } from "react";
-import { getProductBySlug } from "@/actions/products/get-product-by-slug";
 
 export default function ProductsInCart() {
     const productsInCart = useCartStore(state => (state.items));

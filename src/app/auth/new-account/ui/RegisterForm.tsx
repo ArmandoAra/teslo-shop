@@ -2,10 +2,8 @@
 
 import { loginAfterRegister, registerUser } from "@/actions";
 import clsx from "clsx";
-import Link from "next/link"
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
-import { set } from 'zod';
 
 type FormInputs = {
     name: string;

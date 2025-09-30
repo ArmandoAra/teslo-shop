@@ -30,19 +30,15 @@ export const authConfig: NextAuthConfig = {
             return true;
         },
 
-        jwt({ token, user, trigger }) {
+        jwt({ token, user }) {
             if (user) {
                 token.data = user;
             }
-            // si el token ya no tiene sesión (después de signOut), limpia
-            // if (trigger !== "signIn" && trigger !== "update" && trigger !== "signUp") {
-            //     token.data = null;
-            // }
-
             return token;
         },
+
         session({ session, token }) {
-            session.user = token.data as any;
+            session.user = token.data as typeof session.user;
             return session;
         }
     },
@@ -69,7 +65,7 @@ export const authConfig: NextAuthConfig = {
                 if (!bcrypt.compareSync(password, user.password)) return null; //Contraseña incorrecta
 
                 //Retornar el usuario
-                const { password: _, ...userWithoutPassword } = user;
+                const { password: _unused, ...userWithoutPassword } = user;
                 return userWithoutPassword;
             },
         }),
@@ -84,7 +80,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
             (await cookies()).delete('authjs.csrf-token');
             (await cookies()).delete('__next_hmr_refresh_hash__');
             (await cookies()).delete('authjs.callback-url');
-            // token.data = null
+
         }
     }
 });

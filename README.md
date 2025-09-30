@@ -55,8 +55,6 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //Logica relacionada con el carrito de compras
 //Persistencia del carrito en el localStorage
 
-<!-- #git push -u origin main -->
-
 //Login y Logout con server actions
 //Login con next-auth siguiendo la documentacion https://nextjs.org/learn/dashboard-app/adding-authentication
 //Validaciones de lado del cliente
@@ -66,6 +64,19 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //Modificaciones en los modelos agregando el modelo de User(Acer migracion y actualizar la base de datos)
 //En el sidebar para saber si el usuario esta logueado o no necesitamos hacer un hook y un SessionProvider
 //debemos crearnos un restful api con la ruta /api/auth/session par trabajar con el session provider
+
+<!-- #git push -u origin main -->
+
+//Zustand Address Store
+//Persistencia
+//Almacenar en base de datos la dirección del usuario
+//Relaciones uno a uno
+//Relaciones uno a muchos
+//Server Actions para:
+//Guardar dirección
+//Actualizar la dirección
+//Borrar la dirección
+//Conectar Zustand con UseForm con Base de datos
 
 <!-- npx prisma migrate dev --name add-user-model -->
 
