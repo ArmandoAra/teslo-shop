@@ -11,16 +11,24 @@ async function main() {
     }
 
     await Promise.all([
+        // Seccion de usuarios
+        await prisma.user.deleteMany(),
+        // Seccion de productos
         await prisma.productImage.deleteMany(),
         await prisma.product.deleteMany(),
         await prisma.category.deleteMany(),
     ])
 
-    const { categories, products } = initialData;
+    const { categories, products, users } = initialData;
 
     const categoriesData = categories.map(category => ({
         name: category,
     }))
+
+    // Users
+    await prisma.user.createMany({
+        data: users
+    });
 
     // Categories
     await prisma.category.createMany({

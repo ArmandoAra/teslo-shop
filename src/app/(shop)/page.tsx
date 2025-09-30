@@ -3,7 +3,7 @@ export const revalidate = 60; //60 seconds (esto es para que next haga revalidac
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import ProductGrid from "@/components/products/product-grid/ProductGrid";
-import Title from "@/components/ui/title-component/Title";
+import { PageTitle } from "@/components";
 import Pagination from "@/components/ui/pagination/Pagination";
 
 interface Props {
@@ -25,7 +25,7 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <>
-      <Title title="Welcome to Teslo Shop" subtitle="La mejor tienda de tecnología" className="text-center" />
+      <PageTitle title="Welcome to Teslo Shop" subtitle="La mejor tienda de tecnología" className="text-center" />
       <ProductGrid products={products} />
       <Pagination totalPages={totalPages} />
     </>

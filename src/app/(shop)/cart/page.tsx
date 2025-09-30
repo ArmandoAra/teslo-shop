@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/title-component/Title";
+import { PageTitle } from "@/components";
 import Link from "next/link";
 
 import ProductsInCart from "./ui/productsInCart";
@@ -10,7 +10,7 @@ export default function CartPage() {
     // redirect("/empty");
 
     return (
-        <div className="flex flex-col justify-center items-center p-4 mb-20 ">
+        <div className="flex flex-col justify-center items-center p-4 mb-20 h-screen">
             <PageTitle title="Cart" />
             <div className="w-full flex flex-col md:grid md:grid-cols-[2fr_1fr] justify-center items-start gap-10 md:gap-2">
                 {/* Carrito */}

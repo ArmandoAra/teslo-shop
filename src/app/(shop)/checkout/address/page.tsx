@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/title-component/Title";
+import { PageTitle } from "@/components";
 import Link from 'next/link';
 
 
@@ -6,9 +6,7 @@ export default function NamePage() {
     return (
         <div className="flex flex-col sm:justify-center sm:items-center mb-72 px-10 sm:px-0">
 
-
-
-            <div className="w-full  xl:w-[1000px] flex flex-col justify-center text-left">
+            <div className="w-full  xl:w-[1000px] flex flex-col justify-center text-left p-0 md:p-4">
 
                 <PageTitle title="Address" subtitle="Delivery Address" />
 
@@ -20,7 +18,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Name'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -29,7 +27,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Surname'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -38,7 +36,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Street Address'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -47,7 +45,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Apartment, suite, etc. (optional)'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -57,7 +55,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Postal Code'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -66,7 +64,7 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='City'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
@@ -74,7 +72,7 @@ export default function NamePage() {
                         <span>Country</span>
                         <select
                             title='Country'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         >
                             <option value="">[ Seleccione ]</option>
                             <option value="CRI">Costa Rica</option>
@@ -86,23 +84,23 @@ export default function NamePage() {
                         <input
                             type="text"
                             placeholder='Phone'
-                            className="p-2 border rounded-md bg-gray-200"
+                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
                         />
                     </div>
 
 
 
-                    <div className="flex flex-col mb-2 sm:mt-10">
-                        <Link
-                            href='/checkout'
-                            className="btn-primary flex w-full sm:w-1/2 justify-center ">
-                            Siguiente
-                        </Link>
-                    </div>
 
 
                 </div>
 
+                <div className="flex flex-col mb-2 sm:mt-10 items-end">
+                    <Link
+                        href='/checkout'
+                        className="btn-primary flex w-full sm:w-1/4 justify-center ">
+                        Siguiente
+                    </Link>
+                </div>
             </div>
 
 

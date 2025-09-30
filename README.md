@@ -52,10 +52,29 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //Cambiar Metadata
 //Detalles a la hora de compartir enlaces en redes sociales
 
-<!-- #git push -u origin main -->
-
 //Logica relacionada con el carrito de compras
 //Persistencia del carrito en el localStorage
+
+<!-- #git push -u origin main -->
+
+//Login y Logout con server actions
+//Login con next-auth siguiendo la documentacion https://nextjs.org/learn/dashboard-app/adding-authentication
+//Validaciones de lado del cliente
+//uso de useForm
+//Englobar tambien la sesion del lado del cliente
+//Protection de rutas
+//Modificaciones en los modelos agregando el modelo de User(Acer migracion y actualizar la base de datos)
+//En el sidebar para saber si el usuario esta logueado o no necesitamos hacer un hook y un SessionProvider
+//debemos crearnos un restful api con la ruta /api/auth/session par trabajar con el session provider
+
+<!-- npx prisma migrate dev --name add-user-model -->
+
+//Instalamos la dependencia bcryptjs para hashear las contraseñas y guardarlas de forma segura en la base de datos
+//Pagina de perfil de usuario
+
+<!-- NextAuth.js -->
+<!-- //Crear una variable de entorno para generar una  semilla unica -->
+<!-- Ejecutamos comando openssl rand -base64 32 y nos genera algo como esto  7sOGoMvllXorsgiTj1grLzxwHoFl7mAyVss1chCLO9Q=-->
 
 <!-- Importante (En los scripts de node no utilizar las rutas de importacion con @ , porque no las reconoce) -->
 <!-- Nota: para ejecutarlo debemos ir en la terminal a la ruta donde esta el seed y ejecutar npx tsc --init para crear un archivo de configuracion y asi se puedan hacer importaciones

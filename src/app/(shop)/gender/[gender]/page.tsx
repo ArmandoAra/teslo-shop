@@ -2,7 +2,7 @@ export const revalidate = 60; //60 seconds
 
 
 import ProductGrid from "@/components/products/product-grid/ProductGrid";
-import Title from "@/components/ui/title-component/Title";
+import { PageTitle } from "@/components";
 
 // constants
 import { redirect } from "next/navigation";
@@ -41,7 +41,7 @@ export default async function CategoryPage({ params, searchParams: sParams }: Pr
 
     return (
         <div className="bg-blue-200 flex flex-col min-h-screen pt-10 px-5  items-center">
-            <Title
+            <PageTitle
                 title={" Articles for " + labels[gender]}
             />
             <ProductGrid products={products} />

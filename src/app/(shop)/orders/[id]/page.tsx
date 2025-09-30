@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/title-component/Title";
+import { PageTitle } from "@/components";
 import { initialData } from "@/seed/seed";
 import clsx from "clsx";
 import Image from "next/image";

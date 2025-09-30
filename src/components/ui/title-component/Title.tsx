@@ -6,7 +6,7 @@ interface Props {
     className?: string;
 }
 
-export default function PageTitle({ title, subtitle, className }: Props) {
+export function PageTitle({ title, subtitle, className }: Props) {
     return (
         <div className={`mt-3 ${className}`}>
             <h1 className={`text-4xl font-bold antialiased my-10 ${titleFont.className}`}>{title}</h1>

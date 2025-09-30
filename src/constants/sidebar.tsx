@@ -1,7 +1,5 @@
 
 import {
-    IoLogInOutline,
-    IoLogOutOutline,
     IoPeopleOutline,
     IoPersonOutline,
     IoShirtOutline,
@@ -11,24 +9,14 @@ import {
 
 export const menuItemsGroup1 = [
     {
-        link: "/",
+        link: "/profile",
         title: "My Account",
-        icon: <IoPersonOutline />
+        icon: <IoPersonOutline />,
     },
     {
         link: "/",
         title: "Tickets",
-        icon: <IoTicketOutline />
-    },
-    {
-        link: "/",
-        title: "Log In",
-        icon: <IoLogInOutline />
-    },
-    {
-        link: "/",
-        title: "Log Out",
-        icon: <IoLogOutOutline />
+        icon: <IoTicketOutline />,
     },
 ]
 
