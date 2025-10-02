@@ -33,7 +33,7 @@ export default function AddressForm({ countries, userStoredAddress }: Props) {
         defaultValues: {
             // viene de la base de datos
             ...userStoredAddress,
-            rememberAddress: true
+            rememberAddress: false
         }
     });
     // Obteniendo el Id de la sesion
