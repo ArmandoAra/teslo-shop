@@ -1,110 +1,29 @@
 import { PageTitle } from "@/components";
-import Link from 'next/link';
+import AddressForm from "./ui/AddressForm";
+import { getCountries, getUserAddress } from "@/actions";
+import { auth } from "@/auth.config";
 
 
-export default function NamePage() {
+export default async function AddressPage() {
+    const countries = await getCountries();
+    const session = await auth();
+    if (!session) {
+        return (
+            <div className="container mx-auto px-4 h-screen">
+                <PageTitle title="Address" subtitle="Delivery Address" />
+                <p className="mt-8 text-lg">You must be logged in to view this page.</p>
+            </div>
+        )
+    }
+    const address = await getUserAddress(session.user.id);
+
+
     return (
         <div className="flex flex-col sm:justify-center sm:items-center mb-72 px-10 sm:px-0">
-
             <div className="w-full  xl:w-[1000px] flex flex-col justify-center text-left p-0 md:p-4">
-
                 <PageTitle title="Address" subtitle="Delivery Address" />
-
-                <div className="grid grid-cols-1 gap-2 sm:gap-5 sm:grid-cols-2">
-
-
-                    <div className="flex flex-col mb-2">
-                        <span>Name</span>
-                        <input
-                            type="text"
-                            placeholder='Name'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>Surname</span>
-                        <input
-                            type="text"
-                            placeholder='Surname'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>Address</span>
-                        <input
-                            type="text"
-                            placeholder='Street Address'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>Address 2 (optional)</span>
-                        <input
-                            type="text"
-                            placeholder='Apartment, suite, etc. (optional)'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-
-                    <div className="flex flex-col mb-2">
-                        <span>Postal Code</span>
-                        <input
-                            type="text"
-                            placeholder='Postal Code'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>City</span>
-                        <input
-                            type="text"
-                            placeholder='City'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>Country</span>
-                        <select
-                            title='Country'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        >
-                            <option value="">[ Seleccione ]</option>
-                            <option value="CRI">Costa Rica</option>
-                        </select>
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <span>Tel.</span>
-                        <input
-                            type="text"
-                            placeholder='Phone'
-                            className="p-2 border rounded-md bg-gray-200 border-blue-400"
-                        />
-                    </div>
-
-
-
-
-
-                </div>
-
-                <div className="flex flex-col mb-2 sm:mt-10 items-end">
-                    <Link
-                        href='/checkout'
-                        className="btn-primary flex w-full sm:w-1/4 justify-center ">
-                        Siguiente
-                    </Link>
-                </div>
+                <AddressForm countries={countries} userStoredAddress={address} />
             </div>
-
-
-
 
         </div>
     );

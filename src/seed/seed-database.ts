@@ -1,5 +1,6 @@
 import { initialData } from './seed.js';
 import prisma from '../lib/prisma';
+import { countries } from './seed-countries.js';
 
 //Run: npx tsx src/seed/seed-database.ts
 // Script to seed the database with initial data
@@ -11,12 +12,16 @@ async function main() {
     }
 
     await Promise.all([
+        // Seccion de userAddress
+        await prisma.userAddress.deleteMany(),
         // Seccion de usuarios
         await prisma.user.deleteMany(),
         // Seccion de productos
         await prisma.productImage.deleteMany(),
         await prisma.product.deleteMany(),
         await prisma.category.deleteMany(),
+        // Seccion de paises
+        await prisma.countries.deleteMany(),
     ])
 
     const { categories, products, users } = initialData;
@@ -34,6 +39,11 @@ async function main() {
     await prisma.category.createMany({
         data: categoriesData
     })
+
+    // Countries
+    await prisma.countries.createMany({
+        data: countries
+    });
 
     // //Obtengo las categorias de la base de datos
     const dbCategories = await prisma.category.findMany();
