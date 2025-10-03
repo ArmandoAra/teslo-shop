@@ -7,11 +7,11 @@ export const deleteUserAddress = async (userId: string) => {
         await prisma.userAddress.delete({
             where: { userId }
         });
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
+        // Al no haber serleccionado para salvar la direccion, puede que no exista ninguna direccion para eliminar y eso genera un error
         return {
             ok: false,
-            message: 'Error deleting address'
+            message: 'Error deleting address' + e
         }
     }
 }

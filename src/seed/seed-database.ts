@@ -12,6 +12,11 @@ async function main() {
     }
 
     await Promise.all([
+        // Seccion de orderAddress
+        await prisma.orderAddress.deleteMany(),
+        // Seccion de order
+        await prisma.orderItem.deleteMany(),
+        await prisma.order.deleteMany(),
         // Seccion de userAddress
         await prisma.userAddress.deleteMany(),
         // Seccion de usuarios

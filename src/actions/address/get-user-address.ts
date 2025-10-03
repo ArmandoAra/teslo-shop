@@ -33,10 +33,8 @@ export const getUserAddress = async (userId: string) => {
             where: { userId }
         });
 
-        if (!address) return emptyData
+        if (!address) return emptyData //Devuelve un objeto vacio para no tener problemas con el tipado
         const { address2, countryId, ...rest } = address;
-
-        console.log(address2)
 
         return {
             ...rest,

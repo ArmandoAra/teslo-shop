@@ -65,8 +65,6 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //En el sidebar para saber si el usuario esta logueado o no necesitamos hacer un hook y un SessionProvider
 //debemos crearnos un restful api con la ruta /api/auth/session par trabajar con el session provider
 
-<!-- #git push -u origin main -->
-
 //Zustand Address Store
 //Persistencia
 //Almacenar en base de datos la dirección del usuario
@@ -79,6 +77,17 @@ centralizar la peticion con prisma en un solo lugar para reutilizarla (/actions/
 //Conectar Zustand con UseForm con Base de datos
 
 <!-- npx prisma migrate dev --name add-user-model -->
+<!-- #git push -u origin main -->
+
+Relaciones uno a uno
+Relaciones de uno a muchos
+Transacciones de base de datos
+Transacciones con Prisma
+Manejo de inventario
+Crear ordenes
+Maestro - Detalle
+Server actions
+Consideraciones a la hora de crear la orden basado en un carrito de compras
 
 //Instalamos la dependencia bcryptjs para hashear las contraseñas y guardarlas de forma segura en la base de datos
 //Pagina de perfil de usuario

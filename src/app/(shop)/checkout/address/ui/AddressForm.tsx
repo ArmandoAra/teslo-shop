@@ -60,10 +60,9 @@ export default function AddressForm({ countries, userStoredAddress }: Props) {
 
 
     const onSubmit = async (data: AddressFormData) => {
-        console.log(data);
 
-        setAddress(data);
-        const { rememberAddress, ...address } = data;
+        const { rememberAddress: _unused, ...address } = data;
+        setAddress(address); // Aqui address viene sin rememberAddress
 
         if (data.rememberAddress && session?.user) {
             // Guardar en la base de datos

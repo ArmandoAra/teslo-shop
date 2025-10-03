@@ -63,6 +63,9 @@ model Product {
   // relation to ProductImage
   ProductImage ProductImage[]
 
+  //relation to OrderItem
+  OrderItem OrderItem[]
+
   @@index([gender])
 }
 
@@ -87,10 +90,12 @@ model User {
   role          Role      @default(user)
   image         String?
 
-  address UserAddress?
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // relaciones
+  address UserAddress?
+  Order   Order[]
 }
 
 model Countries {
@@ -98,7 +103,8 @@ model Countries {
   name String
 
   // relaciones
-  UserAddress UserAddress[]
+  UserAddress  UserAddress[]
+  OrderAddress OrderAddress[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -123,6 +129,68 @@ model UserAddress {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Order     Order[]
 
   @@index([userId])
+}
+
+// Order
+
+model Order {
+  id           String    @id @default(uuid())
+  subTotal     Float
+  tax          Float
+  total        Float
+  itemsInOrder Int
+  isPaid       Boolean   @default(false)
+  paidAt       DateTime?
+
+  // relaciones
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  orderItems    OrderItem[]
+  OrderAddress  OrderAddress?
+  UserAddress   UserAddress?  @relation(fields: [userAddressId], references: [id])
+  userAddressId String?
+}
+
+model OrderItem {
+  id       String @id @default(uuid())
+  quantity Int
+  size     Size
+  price    Float
+
+  // relaciones
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+}
+
+// Esta direccion no es la misma que la del usuario
+model OrderAddress {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName   String
+  address    String
+  address2   String?
+  postalCode String
+  phone      String
+  city       String
+
+  countryId String
+  country   Countries @relation(fields: [countryId], references: [id])
+
+  orderId String @unique
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
