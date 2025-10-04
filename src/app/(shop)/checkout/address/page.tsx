@@ -7,6 +7,7 @@ import { auth } from "@/auth.config";
 export default async function AddressPage() {
     const countries = await getCountries();
     const session = await auth();
+
     if (!session) {
         return (
             <div className="container mx-auto px-4 h-screen">

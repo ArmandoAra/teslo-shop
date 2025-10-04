@@ -14,9 +14,9 @@ export const menuItemsGroup1 = [
         icon: <IoPersonOutline />,
     },
     {
-        link: "/",
-        title: "Tickets",
-        icon: <IoTicketOutline />,
+        link: "/orders",
+        title: "Orders",
+        icon: <IoTicketOutline />
     },
 ]
 
@@ -25,11 +25,6 @@ export const menuItemsGroup2 = [
         link: "/",
         title: "Products",
         icon: <IoShirtOutline />
-    },
-    {
-        link: "/",
-        title: "Orders",
-        icon: <IoTicketOutline />
     },
     {
         link: "/",

@@ -1,12 +1,21 @@
 // https://tailwindcomponents.com/component/hoverable-table
+import { getOrderByUser } from '@/actions/order/get-order-by-user';
 import { PageTitle } from '@/components';
 
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { IoCardOutline } from 'react-icons/io5';
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+
+    const { ok, order = [] } = await getOrderByUser();
+
+    if (!ok) {
+        redirect("/auth/login");
+    }
+
     return (
-        <>
+        <div className="p-4 mb-20 h-screen">
             <PageTitle title="Orders" />
 
             <div className="mb-10">
@@ -29,49 +38,28 @@ export default function OrdersPage() {
                     </thead>
                     <tbody>
 
-                        <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Mark
-                            </td>
-                            <td className="flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-
-                                <IoCardOutline className="text-green-800" />
-                                <span className='mx-2 text-green-800'>Pagada</span>
-
-                            </td>
-                            <td className="text-sm text-gray-900 font-light px-6 ">
-                                <Link href="/orders/123" className="hover:underline">
-                                    Ver orden
-                                </Link>
-                            </td>
-
-                        </tr>
-
-                        <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Mark
-                            </td>
-                            <td className="flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-
-                                <IoCardOutline className="text-red-800" />
-                                <span className='mx-2 text-red-800'>No Pagada</span>
-
-                            </td>
-                            <td className="text-sm text-gray-900 font-light px-6 ">
-                                <Link href="/orders/123" className="hover:underline">
-                                    Ver orden
-                                </Link>
-                            </td>
-
-                        </tr>
-
+                        {
+                            order?.map(o => (
+                                <tr key={o.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{o.id}</td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                        {o.OrderAddress?.firstName} {o.OrderAddress?.lastName}
+                                    </td>
+                                    <td className="flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                        <IoCardOutline className={o.isPaid ? "text-green-800" : "text-red-800"} />
+                                        <span className='mx-2'>{o.isPaid ? "Pagada" : "No Pagada"}</span>
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 ">
+                                        <Link href={`/orders/${o.id}`} className="hover:underline">
+                                            See Order
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 }

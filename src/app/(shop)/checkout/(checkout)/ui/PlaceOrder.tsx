@@ -5,21 +5,24 @@ import { useAddressStore, useCartStore } from "@/store";
 import { currencyFormatter } from "@/utils";
 import clsx from "clsx";
 import Link from "next/dist/client/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
 export default function PlaceOrder() {
     const [loaded, setLoaded] = useState(false);
+    const router = useRouter();
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
     const products = useCartStore((state) => state.items);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const address = useAddressStore((state) => state.address);
     const { numberOfItems, subTotal, tax, total } = useCartStore();
+    const clearCart = useCartStore((state) => state.clearCart);
 
     useEffect(() => {
         setLoaded(true);
     }, []);
-
     const onPlaceOrder = async () => {
         // Mandar al backend con un server action
         setIsPlacingOrder(true);
@@ -29,10 +32,30 @@ export default function PlaceOrder() {
             size: p.size,
         }));
         const resp = await placeOrder(productsToOrder, address);
-        console.log({ resp });
+        if (!resp.ok) {
+            setIsPlacingOrder(false);
+            setErrorMessage(resp.message);
+            return;
+        }
+        // Cuando llega a este punto ,la orden se creo correctamente
+        //  Limpiar el carrito
+        router.replace(`/orders/${resp.orderId}`);
+        clearCart();
+        // Redireccionar a la pagina de ordenes
 
         setIsPlacingOrder(false);
     }
+
+    //Si no hay direccion o productos, redireccionar
+    // useEffect(() => {
+    //     if (loaded) {
+    //         if (!address || products.length === 0) {
+    //             router.replace("/empty");
+    //         }
+    //     }
+    // }, [loaded, address, products, router]);
+
+
 
     if (!loaded) return (<div>Loading...</div>)
 
@@ -91,7 +114,7 @@ export default function PlaceOrder() {
             </div>
 
 
-            {/* <p className="text-sm text-red-500">Error by creating the order</p> */}
+            <p className="text-sm text-red-500">{errorMessage}</p>
 
             <button
                 onClick={onPlaceOrder}

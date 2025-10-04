@@ -13,6 +13,7 @@ interface State {
     addProduct: (product: ICartProduct) => void;
     updateProductQuantity: (product: ICartProduct, quantity: number) => void;
     removeProduct: (productId: string, size: string) => void;
+    clearCart: () => void;
 }
 
 export const useCartStore = create<State>()(
@@ -58,6 +59,9 @@ export const useCartStore = create<State>()(
                 );
                 set({ items: newItems, ...calculateSummary(newItems) });
             },
+            clearCart: () => {
+                set({ items: [], numberOfItems: 0, subTotal: 0, tax: 0, total: 0 });
+            }
         }),
         { name: "cart-storage" }
     )

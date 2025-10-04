@@ -1,11 +1,11 @@
 'use client';
 import { deleteUserAddress, setUserAddress } from '@/actions';
 import { Country } from '@/interfaces';
-import { useAddressStore } from '@/store';
+import { useAddressStore, useCartStore } from '@/store';
 import clsx from 'clsx';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 interface AddressFormData {
@@ -27,6 +27,8 @@ interface Props {
 
 export default function AddressForm({ countries, userStoredAddress }: Props) {
     const router = useRouter();
+    const [loaded, setLoaded] = useState(false); //Implementamos un loaded para evitar el error de hydration o mismatch
+    const products = useCartStore((state) => state.items);
     // El reset es para resetear el formulario(Puede ser util para cargar datos guardados)
     const { register, handleSubmit, formState: { isValid }, reset } = useForm<AddressFormData>({
         // Se utiliza para establecer los valores predeterminados del formulario(register)
@@ -57,6 +59,20 @@ export default function AddressForm({ countries, userStoredAddress }: Props) {
             });
         }
     }, [address, reset]);
+
+
+    useEffect(() => {
+        setLoaded(true);
+    }, []);
+
+    //si no hay productos, redireccionar
+    useEffect(() => {
+        if (loaded) {
+            if (products.length === 0) {
+                router.replace("/empty");
+            }
+        }
+    }, [products, router, loaded]);
 
 
     const onSubmit = async (data: AddressFormData) => {
