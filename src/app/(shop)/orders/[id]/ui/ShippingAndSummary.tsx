@@ -3,8 +3,8 @@
 import { currencyFormatter } from "@/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IoCardOutline } from "react-icons/io5";
-import clsx from "clsx";
+import PaypalButton from './PayPalButton';
+import PaymentStatus from "./PaymentStatus";
 
 
 interface Data {
@@ -68,9 +68,7 @@ export const ShippingAndSummary = ({ order, orderAddress }: ShippingAndSummaryPr
                                 {orderAddress.postalCode}
                             </span></span>
                     </div>
-                    <Link href={"/checkout/address"} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 justify-center flex">
-                        Edit Address
-                    </Link>
+
                 </div>
 
             </div>
@@ -94,24 +92,12 @@ export const ShippingAndSummary = ({ order, orderAddress }: ShippingAndSummaryPr
                     <span className="text-md font-semibold">{loaded ? currencyFormatter(total) : "Loading..."}</span>
                 </div>
             </div>
+            {
+                order.isPaid
+                    ? (<PaymentStatus isPaid={order.isPaid} />
+                    ) : <PaypalButton orderId={order.id} amount={total} />
+            }
 
-            <div className="flex justify-between w-full">
-                <div className={
-                    clsx("text-xl font-semibold w-full  text-center rounded-lg p-4 mb-4",
-                        {
-                            "bg-green-400": order.isPaid,
-                            "bg-red-400": !order.isPaid,
-                        }
-                    )
-                }>
-                    <IoCardOutline size={30} className="inline-block mr-2" />
-                    <span
-                        className="text-md font-semibold mx-2"
-                    >
-                        Payment Status: {order.isPaid ? "Paid" : "Pending"}
-                    </span>
-                </div>
-            </div>
         </div>
     )
 

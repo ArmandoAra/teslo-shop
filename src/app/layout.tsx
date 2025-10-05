@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "../styles/globals.css";
 import { inter } from "@/config/fonts";
-import { Provider } from "@/components/provider/Provider";
+import { Providers } from "@/components";
 
 
 // El template va a definir como queremos que se vea una parte de todas nuestras rutas
@@ -24,9 +24,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased `}
       >
-        <Provider>
+        <Providers>
           {children}
-        </Provider>
+        </Providers>
       </body>
     </html>
   );

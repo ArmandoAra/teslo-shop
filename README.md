@@ -107,6 +107,31 @@ sus respectivas relaciones y todo como lo hemos creado.Es util cuando ya tenemos
 <!-- Hidratacion: Hicimos un loader en el componente del top-menu, y seteamos el loader en false dentro de un useEffect que va a disparar false cuando se termine de cargar
 el componente, hicimos la condicion que no mostrara la cantidad del carrito hasta que se haya cargado el componente, y asi no da el error de hidratacion -->
 
+<!-- NOTA: El transactionId es el id que nos da el proveedor de pagos para identificar la transaccion, es importante si tenemos varios proveedores de pagos manejar independiente para saber de quien es cada transaccion -->
+
+<!-- https://www.npmjs.com/package/@paypal/react-paypal-js // Paquete de paypal oficial -->
+<!-- Paypal//Hice las configuraciones de cuenta en paypal modo de desarrollador en sandbox, obtube un correo de prueba y contraseña de prueba, el la llave publica y la privada y las colo que en el .env -->
+<!-- En produccion puede que solo halla que cambiar las api keys por las de produccion, para modo de desarrollo solo trabajar en sandbox -->
+<!-- Debemos utilizar un provider generado por la documentacion de paypal en el cliente -->
+
+<!-- Configuracion de prueba de peticion con postman -->
+
+1. Crear una nueva coleccion en postman
+2. Agregar una nueva peticion POST a la URL `https://api-m.sandbox.paypal.com/v1/oauth2/token` con los siguientes headers:
+   - Authorization: Basic {base64_encode(NEXT_PUBLIC_PAYPAL_CLIENT_ID:PAYPAL_SECRET)}
+   - Content-Type: application/x-www-form-urlencoded
+3. En el body de la peticion, agregar los siguientes parametros:
+   - grant_type: client_credentials
+4. Enviar la peticion y verificar que se recibe un token de acceso
+
+<!-- Para chequear la orden de pago -->
+
+1. Crear una nueva peticion GET a la URL `https://api.sandbox.paypal.com/v2/checkout/orders/{order_id}` con los siguientes headers:
+   - Authorization: Bearer {access_token}
+   - Content-Type: application/json
+2. Reemplazar {order_id} por el ID de la orden que se quiere verificar
+3. Enviar la peticion y verificar que se recibe la informacion de la orden
+
 ## Descripcion
 
 ## Correr en dev

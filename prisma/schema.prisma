@@ -153,6 +153,8 @@ model Order {
   OrderAddress  OrderAddress?
   UserAddress   UserAddress?  @relation(fields: [userAddressId], references: [id])
   userAddressId String?
+
+  transactionId String? //el id que nos da el proveedor de pagos
 }
 
 model OrderItem {

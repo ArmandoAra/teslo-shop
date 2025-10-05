@@ -1,5 +1,5 @@
 
-export * from "./provider/Provider";
+export * from "./providers/Providers";
 export * from "./ui/top-menu/TopMenu";
 export * from './products/product-grid/ProductGrid';
 export * from './products/product-grid/ProductGridItem';

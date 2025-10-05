@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     // Verificando si el usuario esta logueado
 
     return (
-        <main className=" w-full flex flex-col bg-slate-200 h-screen ">
+        <main className=" w-full flex flex-col bg-slate-200 h-auto ">
             <TopMenu />
             <Sidebar />
             {children}

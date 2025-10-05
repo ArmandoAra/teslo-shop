@@ -5,6 +5,7 @@ import { currencyFormatter } from "@/utils";
 import { clsx } from "clsx";
 import { IoCardOutline } from "react-icons/io5";
 import { $Enums } from "@/generated/prisma";
+import PaymentStatus from "./PaymentStatus";
 
 interface ICartProduct {
     product: {
@@ -35,7 +36,17 @@ export default function ProductsToPay({ productsInCart, isPaid }: ProductsToPayP
         setLoaded(true);
     }, []);
 
-    if (!loaded) return <></>;
+    // si no ha cargado vamos a renderizar un esqueleton
+    if (!loaded) return (
+        <div className="flex flex-col items-center mt-10 w-full">
+            <div className="w-full lg:w-3/4 space-y-4">
+                <div className="h-20 bg-slate-600 rounded animate-pulse"></div>
+                <div className="h-20 bg-slate-400 rounded animate-pulse"></div>
+                <div className="h-20 bg-slate-600 rounded animate-pulse"></div>
+                <div className="h-20 bg-slate-400 rounded animate-pulse"></div>
+            </div>
+        </div >
+    );
 
     if (!productsInCart || productsInCart.length === 0) {
         return (
@@ -48,27 +59,13 @@ export default function ProductsToPay({ productsInCart, isPaid }: ProductsToPayP
     return (
         <>
             <div className="flex flex-col items-center mt-10 w-full">
-                <div className={
-                    clsx("text-xl font-semibold w-full lg:w-3/4 text-center rounded-lg p-4 mb-4",
-                        {
-                            "bg-green-400": isPaid,
-                            "bg-red-400": !isPaid,
-                        }
-                    )
-                }>
-                    <IoCardOutline size={30} className="inline-block mr-2" />
-                    <span
-                        className="text-md font-semibold mx-2"
-                    >
-                        Payment Status: {isPaid ? "Paid" : "Pending"}
-                    </span>
-                </div>
-                <div className="flex flex-col items-center w-full  gap-4">
+                <div className="flex flex-col items-center w-full md:w-3/4  gap-4">
+                    <PaymentStatus isPaid={isPaid} />
                     {
                         productsInCart.map((item, index) => (
                             <div
                                 key={item.size + index}
-                                className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full lg:w-3/4   gap-4 justify-around  mb-4   bg-slate-300 rounded p-2 ">
+                                className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full    gap-4 justify-around  mb-4   bg-slate-300 rounded p-2 ">
                                 <div className="grid grid-cols-[64px_1fr] w-full gap-2">
                                     <Image
                                         src={`/products/${item.product.ProductImage[0].url}`}

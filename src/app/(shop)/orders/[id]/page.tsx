@@ -17,7 +17,6 @@ export default async function OrderByIdPage({ params }: Props) {
     const { ok, order, } = await getOrderById(id);
     const { orderItems } = order
     const { OrderAddress: orderAddress } = order
-    console.log(JSON.stringify(order, null, 2));
 
     if (!ok) {
         redirect("/")
@@ -25,13 +24,13 @@ export default async function OrderByIdPage({ params }: Props) {
 
 
     return (
-        <div className="flex flex-col justify-center items-center p-4 mb-20 h-screen">
+        <div className="flex flex-col justify-center items-center p-4 mb-20 h-auto">
             <PageTitle title={`Order N°  ${id.split('-')[1]}`} />
 
-            <div className="w-full flex flex-col md:grid md:grid-cols-[2fr_1fr] justify-center items-start gap-10">
+            <div className="w-full flex flex-col md:grid md:grid-cols-[2fr_1fr] justify-center items-start gap-2">
                 <ProductsToPay productsInCart={orderItems} isPaid={order.isPaid} />
                 {/* Cart Summary */}
-                <div className="flex flex-col items-center w-3/4 mx-auto md:mx-0 md:w-2/3 mt-10 gap-4">
+                <div className="flex flex-col items-center w-full mx-auto md:mx-0  mt-10 gap-4">
                     <ShippingAndSummary order={order} orderAddress={orderAddress!} />
                 </div>
             </div >
