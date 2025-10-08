@@ -13,9 +13,12 @@ import './slideshow.css';
 // import required modules
 import { FreeMode, Thumbs, Autoplay, Pagination } from 'swiper/modules'; //estos modulos vienen separados para que la app no pese tanto
 import Image from 'next/image';
+import type { ImagesProps } from '@/interfaces';
+import ProductImage from '../product-image/ProductImge';
+
 
 interface Props {
-    images: string[];
+    images: ImagesProps[];
     title: string;
     className?: string;
 }
@@ -31,13 +34,12 @@ export function MobileProductSlideshow({ images, title, className }: Props) {
                 className="mySwiper2"
             >
                 {images.map((img) => (
-                    <SwiperSlide key={img}>
-                        <Image
-                            src={`/products/${img}`}
+                    <SwiperSlide key={img.id}>
+                        <ProductImage
+                            src={`/products/${img.url}`}
                             alt={title}
                             width={500}
                             height={500}
-                            priority
                             className='object-fill '
                         />
                     </SwiperSlide>

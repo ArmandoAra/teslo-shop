@@ -53,14 +53,14 @@ export default async function ProductPageId({ params }: Props) {
                 <div className="col-span-1 md:col-span-2">
                     {/* Mobile Slideshow */}
                     <MobileProductSlideshow
-                        images={product?.images}
+                        images={product?.ProductImage}
                         title={product?.title}
                         className="md:hidden"
                     />
 
                     {/* Desktop Slideshow  */}
                     <ProductSlideshow
-                        images={product?.images}
+                        images={product?.ProductImage}
                         title={product?.title}
                         className="hidden md:block"
                     />

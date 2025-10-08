@@ -13,3 +13,4 @@ export * from './product/slideshow/ProductSlideshow';
 export * from './product/slideshow/MobileProductSlideshow';
 export * from './ui/footer/Footer';
 export * from './ui/pagination/Pagination';
+export * from './product/product-image/ProductImge';

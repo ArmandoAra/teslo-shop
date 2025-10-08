@@ -155,6 +155,9 @@ model Order {
   userAddressId String?
 
   transactionId String? //el id que nos da el proveedor de pagos
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model OrderItem {

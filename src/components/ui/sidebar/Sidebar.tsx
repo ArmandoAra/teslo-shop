@@ -40,7 +40,7 @@ export function Sidebar() {
                 <div className="fixed inset-0 backdrop-blur-sm z-40" onClick={() => { closeSideMenu() }}></div>
             </>
         )}
-            <aside className={clsx("fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 z-50 transform transition-transform duration-300",
+            <aside className={clsx("fixed top-0 right-0 w-80 h-full z-50 bg-white shadow-lg p-6 transform transition-transform duration-300",
                 {
                     'translate-x-0': isSideMenuOpen,
                     'translate-x-full': !isSideMenuOpen,

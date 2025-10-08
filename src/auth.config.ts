@@ -5,7 +5,8 @@ import Credentials from 'next-auth/providers/credentials';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
 
-const authenticatedRoutes = ['/checkout/address', '/checkout/summary', '/orders'];// ejemplo de rutas que requieren autenticación
+const authenticatedRoutes = ['/checkout/address', '/checkout/summary', '/orders', '/profile'];// ejemplo de rutas que requieren autenticación
+const adminRoutes = ['/admin/users', '/admin', '/admin/orders', '/admin/products', '/admin/products/[slug]'];// ejemplo de rutas que requieren autenticación
 
 export const authConfig: NextAuthConfig = {
     pages: {
@@ -24,6 +25,9 @@ export const authConfig: NextAuthConfig = {
                 // Redirect unauthenticated users to login page
                 return Response.redirect(new URL('/auth/login?callbackUrl=' + encodeURIComponent(nextUrl.pathname), nextUrl));
             } else if (isLoggedIn) {
+                if (adminRoutes.includes(nextUrl.pathname) && auth?.user.role !== 'admin') {
+                    return Response.redirect(new URL('/', nextUrl));
+                }
                 // return Response.redirect(new URL('/checkout/address', nextUrl));
                 return true
             }

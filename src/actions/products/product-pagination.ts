@@ -29,10 +29,14 @@ export const getPaginatedProductsWithImages = async (
             skip: (page - 1) * take,
             include: {
                 ProductImage: {
-                    take: 2, // Limitar a 2 imágenes por producto
+                    take: 2,
                     select: {
                         url: true,
-                    },
+                        id: true,
+                        productId: true,
+                        createdAt: true,
+                        updatedAt: true,
+                    }
                 },
             },
             where: {
@@ -47,13 +51,11 @@ export const getPaginatedProductsWithImages = async (
             },
         })
         const totalPages = Math.ceil(totalCount / take);
-
         return {
             currentPage: page,
             totalPages: totalPages,
             products: products.map(product => ({
                 ...product,
-                images: product.ProductImage.map(img => img.url)
             }))
         }
     } catch (error) {

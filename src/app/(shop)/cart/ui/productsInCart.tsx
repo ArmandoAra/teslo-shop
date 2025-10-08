@@ -1,10 +1,10 @@
 'use client';
 import Link from "next/link";
 import { useCartStore } from "@/store";
-import Image from "next/image";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
 import { useEffect, useState } from "react";
+import ProductImage from "@/components/product/product-image/ProductImge";
 
 export default function ProductsInCart() {
     const productsInCart = useCartStore(state => (state.items));
@@ -28,8 +28,8 @@ export default function ProductsInCart() {
                         key={product.slug + index}
                         className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full lg:w-3/4   gap-4 items-center mb-4   bg-slate-300 rounded p-2 justify-items-center">
                         <div className="grid grid-cols-[64px_1fr] w-full gap-2">
-                            <Image
-                                src={`/products/${product.image}`}
+                            <ProductImage
+                                src={product.image}
                                 alt={product.title}
                                 className="w-16 h-16 object-cover rounded flex-1"
                                 width={64}

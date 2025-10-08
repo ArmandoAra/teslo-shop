@@ -12,3 +12,8 @@ export * from './order/place-order';
 export * from './order/get-order-by-id';
 export * from './order/get-order-by-user';
 export * from './payments/set-transaction-id';
+export * from './user/get-paginater-users';
+export * from './user/chage-user-role';
+export * from './category/get-categories';
+export * from './products/create-update-products';
+export * from './products/delete-product-image';

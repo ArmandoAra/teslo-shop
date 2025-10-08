@@ -5,7 +5,6 @@ import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
 export const registerUser = async (name: string, email: string, password: string) => {
-    console.log({ name, email, password });
     // Here would be the logic to register the user, e.g., calling an API or database operation
     try {
         const user = await prisma.user.create({

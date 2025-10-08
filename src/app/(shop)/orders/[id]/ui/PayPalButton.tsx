@@ -1,8 +1,6 @@
 'use client'
 import {
     PayPalButtons,
-    PayPalButtonsComponentProps,
-    PayPalScriptProvider,
     usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { CreateOrderData, CreateOrderActions, OnApproveData, OnApproveActions } from '@paypal/paypal-js';
@@ -58,7 +56,6 @@ export default function PaypalButton({ orderId, amount }: Props) {
             throw new Error("No details");
         }
         const res = await paypalChekPayment(details.id) //Verificar el pago en backend
-        console.log({ res });
         if (!res.success) {
             throw new Error(res.message);
         }
@@ -67,7 +64,7 @@ export default function PaypalButton({ orderId, amount }: Props) {
 
 
     return (
-        <div className="w-full mt-5">
+        <div className="w-full mt-5 z-0">
             <PayPalButtons
                 createOrder={createOrder}
                 onApprove={onApprove}

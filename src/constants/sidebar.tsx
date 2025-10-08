@@ -22,12 +22,17 @@ export const menuItemsGroup1 = [
 
 export const menuItemsGroup2 = [
     {
-        link: "/",
+        link: "/admin/products",
         title: "Products",
         icon: <IoShirtOutline />
     },
     {
-        link: "/",
+        link: "/admin/orders",
+        title: "All Orders",
+        icon: <IoTicketOutline />
+    },
+    {
+        link: "/admin/users",
         title: "Users",
         icon: <IoPeopleOutline />
     },

@@ -5,6 +5,7 @@ import { $Enums } from "@/generated/prisma";
 import prisma from "@/lib/prisma";
 import { ok } from "assert";
 import { Order } from '../../generated/prisma/index';
+import { redirect } from "next/navigation";
 interface ICartProduct {
     image: string;
     quantity: number;
@@ -24,11 +25,11 @@ interface ICartProduct {
 export const getOrderById = async (orderId: string) => {
 
     const session = await auth();
-    if (!session) {
-        throw new Error('You must be logged in to view your orders.');
-    }
-    try {
 
+    try {
+        if (!session) {
+            throw new Error('You must be logged in to view your orders.');
+        }
         // Siguiendo el orden de relaciones de la base de datos
         // 1. Order
         // 2. OrderAddress
@@ -74,7 +75,7 @@ export const getOrderById = async (orderId: string) => {
         }
 
     } catch (error) {
-        console.error('Error fetching order by ID:', error);
+        redirect('/');
         throw new Error('Could not retrieve order information.');
     }
 

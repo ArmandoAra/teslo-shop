@@ -8,7 +8,7 @@ interface Props {
 export function QuantitySelector({ quantity, stock, onQuantityChange }: Props) {
 
     return (
-        <div className="flex items-center">
+        <div className="flex items-center ">
             <button onClick={() => {
                 if (quantity > 1) onQuantityChange?.(quantity - 1)
             }} className="btn-secondary">-</button>

@@ -86,7 +86,6 @@ async function main() {
             data: imagesData
         });
     })
-    console.log('Database seeded successfully');
 }
 
 // Funcion anonima autoejecutable

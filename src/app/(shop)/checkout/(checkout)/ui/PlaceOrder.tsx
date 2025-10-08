@@ -23,6 +23,7 @@ export default function PlaceOrder() {
     useEffect(() => {
         setLoaded(true);
     }, []);
+
     const onPlaceOrder = async () => {
         // Mandar al backend con un server action
         setIsPlacingOrder(true);

@@ -1,11 +1,9 @@
 'use client';
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { currencyFormatter } from "@/utils";
-import { clsx } from "clsx";
-import { IoCardOutline } from "react-icons/io5";
 import { $Enums } from "@/generated/prisma";
 import PaymentStatus from "./PaymentStatus";
+import ProductImage from "@/components/product/product-image/ProductImge";
 
 interface ICartProduct {
     product: {
@@ -67,8 +65,8 @@ export default function ProductsToPay({ productsInCart, isPaid }: ProductsToPayP
                                 key={item.size + index}
                                 className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full    gap-4 justify-around  mb-4   bg-slate-300 rounded p-2 ">
                                 <div className="grid grid-cols-[64px_1fr] w-full gap-2">
-                                    <Image
-                                        src={`/products/${item.product.ProductImage[0].url}`}
+                                    <ProductImage
+                                        src={item.product.ProductImage[0].url}
                                         alt={item.product.title}
                                         className="w-16 h-16 object-cover rounded flex-1"
                                         width={64}

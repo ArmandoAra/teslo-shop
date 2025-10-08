@@ -8,15 +8,17 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import 'swiper/css/pagination';
 
 import './slideshow.css';
 
 // import required modules
 import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules'; //estos modulos vienen separados para que la app no pese tanto
-import Image from 'next/image';
+import { ImagesProps } from '@/interfaces';
+import ProductImage from '../product-image/ProductImge';
 
 interface Props {
-    images: string[];
+    images: ImagesProps[];
     title: string;
     className?: string;
 }
@@ -40,13 +42,12 @@ export function ProductSlideshow({ images, title, className }: Props) {
                 className="mySwiper2"
             >
                 {images.map((img) => (
-                    <SwiperSlide key={img}>
-                        <Image
-                            src={`/products/${img}`}
+                    <SwiperSlide key={img.id}>
+                        <ProductImage
+                            src={img.url}
                             alt={title}
-                            width={1024}
-                            height={800}
-                            priority
+                            width={500}
+                            height={500}
                             className='object-fill rounded-md'
                         />
                     </SwiperSlide>
@@ -62,14 +63,15 @@ export function ProductSlideshow({ images, title, className }: Props) {
                 className="mySwiper"
             >
                 {images.map((img) => (
-                    <SwiperSlide key={img}>
-                        <Image
-                            src={`/products/${img}`}
+                    <SwiperSlide key={img.id}>
+
+                        <ProductImage
+                            src={img.url}
                             alt={title}
                             width={300}
                             height={300}
-                            priority
                             className='object-fill rounded-md cursor-pointer'
+
                         />
                     </SwiperSlide>
                 ))}

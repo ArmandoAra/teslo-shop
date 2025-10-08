@@ -1,14 +1,13 @@
 export interface Product {
     id: string;
     description: string;
-    images: string[];
+    // images: string[];
     inStock: number;
     price: number;
     sizes: Size[];
     slug: string;
     tags: string[];
     title: string;
-    //TODO: type: ValidType;
     gender: Category;
 }
 
@@ -21,6 +20,20 @@ export interface ICartProduct {
     size: Size;
     image: string;
 }
+
+export interface ProductImage {
+    id: string;
+    url: string;
+    productId?: string;
+}
+export interface ImagesProps {
+    id: number;
+    url: string;
+    productId: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 
 export type Category = 'men' | 'women' | 'kid' | 'unisex'
 export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
