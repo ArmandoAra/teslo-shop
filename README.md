@@ -120,6 +120,13 @@ el componente, hicimos la condicion que no mostrara la cantidad del carrito hast
 
 <!-- TODO: Hay que implementar una forma para que cuando se estan seleccionando la cantidad de los productos baje la cantidad que hay en el stock porque puede seleccionar la cantidad maxima y despues de agregar al carrito puede volver a seleccionar la cantidad maxima y asi consecutivamente -->
 
+<!-- Deploy -->
+<!-- despues que subimos el codigo github. En vercel agregamos el nuevo proyecto y lo conectamos con el que tenemos en github -->
+<!-- Vamos al storage para agregar una nueva base de datos , en este caso postgres prisma -->
+<!-- Copiamos las variables de entorno de postgres y las pegamos en nuestro .env -->
+<!-- Hacemos la migracion de prisma para crear la base de datos en versel (prisma.io (En caso que de problemas, chequear en prisma las APIkeys)-->
+<!-- Injectar el seed (De ser requerido, como en este proyecto) -->
+
 1. Crear una nueva coleccion en postman
 2. Agregar una nueva peticion POST a la URL `https://api-m.sandbox.paypal.com/v1/oauth2/token` con los siguientes headers:
    - Authorization: Basic {base64_encode(NEXT_PUBLIC_PAYPAL_CLIENT_ID:PAYPAL_SECRET)}
