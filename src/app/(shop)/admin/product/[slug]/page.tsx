@@ -1,13 +1,12 @@
 import { getCategories, getProductBySlug } from "@/actions";
 import { PageTitle } from "@/components";
-import { get } from "http";
-import { redirect } from "next/navigation";
+
 import { ProductForm } from "./ProductForm";
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 export default async function AdminProductPage({ params }: Props) {
@@ -20,12 +19,6 @@ export default async function AdminProductPage({ params }: Props) {
         getCategories()
     ]);
 
-
-    // if (!product) {
-    //     redirect('/admin/products');
-    // }
-
-    // definiendo la tarea que vamos a realizar
     const title = (slug === 'new') ? 'Create Product' : `Edit Product`;
 
     return (

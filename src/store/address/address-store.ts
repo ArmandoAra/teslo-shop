@@ -33,7 +33,7 @@ const initialData = {
 export const useAddressStore = create<State>()(
     // El persist guarda el estado en el local storage
     persist(
-        (set, get) => ({
+        (set) => ({
             address: initialData,
             // El set es para actualizar el estado
             setAddress: (address) => set({ address })

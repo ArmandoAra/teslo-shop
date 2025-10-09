@@ -116,6 +116,8 @@ el componente, hicimos la condicion que no mostrara la cantidad del carrito hast
 
 <!-- Configuracion de prueba de peticion con postman -->
 
+<!-- NOTA: No olvidar que los params que vienen en las peticiones deben ser de tipo Promise  -->
+
 <!-- TODO: Hay que implementar una forma para que cuando se estan seleccionando la cantidad de los productos baje la cantidad que hay en el stock porque puede seleccionar la cantidad maxima y despues de agregar al carrito puede volver a seleccionar la cantidad maxima y asi consecutivamente -->
 
 1. Crear una nueva coleccion en postman
@@ -151,5 +153,7 @@ el componente, hicimos la condicion que no mostrara la cantidad del carrito hast
 6.Llenar la base de dato con informacion de relleno. npx tsx src/seed/seed-database.ts
 
 7. Correr el proyecto `npm run dev`
+
+8. Limpiar el localStorage del navegador
 
 ## Correr en prod

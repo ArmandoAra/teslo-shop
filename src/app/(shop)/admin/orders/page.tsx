@@ -1,7 +1,6 @@
 // https://tailwindcomponents.com/component/hoverable-table
 import { getOrdersPagination } from '@/actions/order/get-orders-pagination';
 import { PageTitle } from '@/components';
-import Pagination from '@/components/ui/pagination/Pagination';
 
 import Link from 'next/link';
 import { redirect } from 'next/navigation';

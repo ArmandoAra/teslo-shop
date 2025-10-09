@@ -5,7 +5,6 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { v2 as cloudinary } from 'cloudinary';
-import { the } from '../../../.next/types/validator';
 
 cloudinary.config(process.env.CLOUDINARY_URL || ''); // Configurar Cloudinary con la variable de entorno
 
@@ -116,14 +115,6 @@ export const createOrUpdateProduct = async (formData: FormData) => {
             error: 'Error al crear/actualizar el producto'
         }
 
-    }
-
-
-    // TODO: revalidar el path
-
-
-    return {
-        ok: true
     }
 }
 

@@ -1,7 +1,6 @@
 'use client'
 
 import { currencyFormatter } from "@/utils";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import PaypalButton from './PayPalButton';
 import PaymentStatus from "./PaymentStatus";

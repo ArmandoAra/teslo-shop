@@ -12,7 +12,6 @@ import './slideshow.css';
 
 // import required modules
 import { FreeMode, Thumbs, Autoplay, Pagination } from 'swiper/modules'; //estos modulos vienen separados para que la app no pese tanto
-import Image from 'next/image';
 import type { ImagesProps } from '@/interfaces';
 import ProductImage from '../product-image/ProductImge';
 

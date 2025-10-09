@@ -2,7 +2,6 @@
 
 import { auth } from "@/auth.config";
 import prisma from "@/lib/prisma";
-import { ok } from "assert";
 
 
 export const getPaginaterUsers = async () => {

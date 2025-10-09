@@ -1,6 +1,5 @@
 import { getOrderById } from "@/actions";
 import { PageTitle } from "@/components";
-import Link from "next/link";
 
 import { ShippingAndSummary } from "./ui/ShippingAndSummary";
 import ProductsToPay from "./ui/ProductsToPay";

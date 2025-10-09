@@ -1,6 +1,5 @@
 'use server';
 import prisma from '@/lib/prisma';
-import { ok } from 'assert';
 import { revalidatePath } from 'next/cache';
 import { v2 as cloudinary } from 'cloudinary';
 

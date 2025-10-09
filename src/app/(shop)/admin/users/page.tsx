@@ -12,9 +12,9 @@ export default async function OrdersPage() {
     // Server acction
     const { ok, users = [] } = await getPaginaterUsers();
 
-    // if (!ok) {
-    //     redirect("/auth/login");
-    // }
+    if (!ok) {
+        redirect("/auth/login");
+    }
 
     return (
         <div className="p-4 mb-20 h-screen">

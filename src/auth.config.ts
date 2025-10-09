@@ -69,7 +69,7 @@ export const authConfig: NextAuthConfig = {
                 if (!bcrypt.compareSync(password, user.password)) return null; //Contraseña incorrecta
 
                 //Retornar el usuario
-                const { password: _unused, ...userWithoutPassword } = user;
+                const { password: _password, ...userWithoutPassword } = user;
                 return userWithoutPassword;
             },
         }),

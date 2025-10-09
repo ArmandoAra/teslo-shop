@@ -16,7 +16,7 @@ interface ICartProduct {
     quantity: number;
     size: $Enums.Size;
     price: number;
-}[]
+}
 
 
 interface ProductsToPayProps {

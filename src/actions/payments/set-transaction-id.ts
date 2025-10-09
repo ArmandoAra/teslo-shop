@@ -15,6 +15,7 @@ export const setTransactionId = async (orderId: string, transactionId: string) =
             message: 'TransactionId saved successfully',
         }
     } catch (error) {
+        console.log(error);
         return {
             success: false,
             message: 'Error saving transactionId'

@@ -1,26 +1,9 @@
 'use server';
 
 import { auth } from "@/auth.config";
-import { $Enums } from "@/generated/prisma";
 import prisma from "@/lib/prisma";
-import { ok } from "assert";
-import { Order } from '../../generated/prisma/index';
 import { redirect } from "next/navigation";
-interface ICartProduct {
-    image: string;
-    quantity: number;
-    size: $Enums.Size;
-    sizes: $Enums.Size[];
-    id: string;
-    title: string;
-    description: string;
-    inStock: number;
-    price: number;
-    slug: string;
-    tags: string[];
-    gender: $Enums.Gender;
-    categoryId: string;
-}[]
+
 
 export const getOrderById = async (orderId: string) => {
 
@@ -75,8 +58,8 @@ export const getOrderById = async (orderId: string) => {
         }
 
     } catch (error) {
+        console.log(error);
         redirect('/');
-        throw new Error('Could not retrieve order information.');
     }
 
 

@@ -1,7 +1,6 @@
 'use server';
 
 import { auth } from '@/auth.config';
-import { Category } from '@/interfaces';
 import prisma from '@/lib/prisma';
 
 
@@ -22,7 +21,8 @@ export const getCategories = async () => {
         }));
 
     } catch (error) {
-        throw new Error("Failed to fetch categories");
+        console.log(error);
+        throw new Error("Failed to fetch categories + ");
     }
 
 };

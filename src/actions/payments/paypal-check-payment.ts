@@ -70,9 +70,10 @@ export async function paypalChekPayment(transactionId: string) {
         }
 
     } catch (error) {
+        console.log(error);
         return {
             success: false,
-            message: 'Error al actualizar la orden en la base de datos',
+            message: 'Error al actualizar la orden en la base de datos'
         };
     }
 

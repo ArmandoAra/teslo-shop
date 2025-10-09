@@ -24,6 +24,7 @@ export const changeUserRole = async (userId: string, role: 'admin' | 'user') => 
             user
         }
     } catch (error) {
+        console.log(error);
         return {
             ok: false,
             message: 'Error updating user role'

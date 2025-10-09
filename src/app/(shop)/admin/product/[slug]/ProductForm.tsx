@@ -184,7 +184,8 @@ export const ProductForm = ({ product, categories }: Props) => {
                         }
                     </select>
                 </div>
-                {
+                {!isValid && <p className="mb-2 text-red-500">* Please fill all required fields</p>}
+                {isValid &&
                     <button type="submit" className="btn-primary w-full">
                         Guardar
                     </button>}
